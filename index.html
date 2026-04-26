@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>StockFlow - Période de commande à quantité constante</title>
+    <!-- TailwindCSS + Font Awesome + Google Fonts -->
+    <!-- Tailwind CSS via CDN (avec fallback silencieux) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <!-- html2canvas + jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- Styles personnalisés (thème sombre) -->
+    <style>
+      * {
+        font-family: "Inter", sans-serif;
+      }
+      body.dark {
+        background-color: #0f172a;
+        color: #e2e8f0;
+      }
+      body.dark .card-dark {
+        background-color: #1e293b;
+        border-color: #334155;
+      }
+      body.dark input,
+      body.dark select {
+        background-color: #0f172a;
+        border-color: #475569;
+        color: #f1f5f9;
+      }
+      body.dark .nav-btn {
+        color: #94a3b8;
+      }
+      body.dark .nav-btn.active {
+        background-color: #3b82f6;
+        color: white;
+      }
+      .transition-theme {
+        transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-900 transition-theme">
+    <div class="max-w-4xl mx-auto px-4 py-6 pb-24">
+      <!-- Header -->
+      <header class="flex justify-between items-center mb-8 flex-wrap gap-4">
+        <div class="flex items-center gap-3">
+          <div class="bg-blue-600 p-2 rounded-xl shadow-md">
+            <i class="fas fa-boxes-stacked text-white text-2xl"></i>
+          </div>
+          <div>
+            <h1
+              class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent"
+            >
+              StockFlow
+            </h1>
+            <p class="text-sm text-gray-500 dark:text-gray-400">
+              Période de commande à quantité constante
+            </p>
+          </div>
+        </div>
+        <button
+          id="themeToggle"
+          class="px-4 py-2 rounded-full bg-white dark:bg-slate-800 shadow-md border border-gray-200 dark:border-slate-700 hover:shadow-lg transition-all"
+        >
+          <i class="fas fa-moon dark:hidden"></i>
+          <i class="fas fa-sun hidden dark:inline"></i>
+          <span class="ml-2 text-sm">Thème</span>
+        </button>
+      </header>
+
+      <!-- Zone de contenu dynamique -->
+      <main id="mainContent"></main>
+
+      <!-- Navigation fixed en bas (mobile-first) -->
+      <nav
+        class="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-gray-200 dark:border-slate-700 shadow-lg rounded-t-2xl max-w-4xl mx-auto"
+      >
+        <div class="flex justify-around py-2">
+          <button
+            data-view="params"
+            class="nav-btn flex flex-col items-center gap-1 px-5 py-2 rounded-xl transition-all active"
+          >
+            <i class="fas fa-sliders-h text-lg"></i>
+            <span class="text-xs font-medium">Paramètres</span>
+          </button>
+          <button
+            data-view="visual"
+            class="nav-btn flex flex-col items-center gap-1 px-5 py-2 rounded-xl transition-all"
+          >
+            <i class="fas fa-chart-line text-lg"></i>
+            <span class="text-xs font-medium">Analyse</span>
+          </button>
+          <button
+            data-view="explore"
+            class="nav-btn flex flex-col items-center gap-1 px-5 py-2 rounded-xl transition-all"
+          >
+            <i class="fas fa-flask text-lg"></i>
+            <span class="text-xs font-medium">Exploration</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <script src="js/model.js"></script>
+    <script src="js/view.js"></script>
+    <script src="js/controller.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

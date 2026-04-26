@@ -1,0 +1,202 @@
+/* Variables de couleurs (thème clair) */
+:root {
+  --bg: #f5f7fb;
+  --surface: #ffffff;
+  --text: #1e293b;
+  --primary: #3b82f6;
+  --primary-dark: #2563eb;
+  --secondary: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --border: #e2e8f0;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+body.dark {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --text: #e2e8f0;
+  --border: #334155;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background 0.2s, color 0.2s;
+}
+
+body {
+  font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  padding-bottom: 70px; /* pour la nav fixe */
+}
+
+.app-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+h1 {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.theme-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 0.4rem 0.8rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--surface);
+  display: flex;
+  justify-content: space-around;
+  padding: 0.75rem 0.5rem;
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  z-index: 100;
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  color: var(--text);
+  opacity: 0.7;
+}
+
+.nav-btn.active {
+  background: var(--primary);
+  color: white;
+  opacity: 1;
+}
+
+/* Cards & formulaires */
+.card {
+  background: var(--surface);
+  border-radius: 1rem;
+  padding: 1.2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border);
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  width: 180px;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.indicator {
+  background: var(--bg);
+  padding: 0.8rem;
+  border-radius: 0.8rem;
+  margin: 0.5rem 0;
+}
+
+canvas {
+  max-height: 300px;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+button.btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+button.btn-secondary {
+  background: var(--secondary);
+}
+
+.btn-sm {
+  padding: 0.3rem 0.8rem;
+  font-size: 0.8rem;
+}
+
+.explore-block {
+  border-left: 4px solid var(--primary);
+  margin-bottom: 1.5rem;
+  padding-left: 1rem;
+}
+
+@media (max-width: 600px) {
+  .form-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .form-group label {
+    width: auto;
+  }
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Pour mobile : permettre le défilement horizontal du graphique */
+@media (max-width: 640px) {
+  .chart-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 -1rem;
+    padding: 0 1rem;
+  }
+  .chart-container canvas {
+    min-width: 500px;
+  }
+  canvas#costCurveChart {
+    min-width: 500px; /* Largeur minimale pour voir les détails */
+    height: auto;
+  }
+}
