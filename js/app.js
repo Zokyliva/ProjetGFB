@@ -1,13 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('🚀 StockFlow démarré');
-
+    console.log('🚀 StockFlow démarré (MGA)');
     const model = new StockModel();
     const view = new StockView();
     const controller = new StockController(model, view);
-
     view.renderCurrentView(model, 'params');
     controller.attachParamsListeners();
     controller.setActiveNav('params');
-
     console.log('✅ Application prête');
 });
